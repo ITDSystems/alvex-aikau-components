@@ -4,12 +4,4 @@
 	<bean id="alvex-aicom" parent="alvex-extension"
           class="com.alvexcore.share.AikauComponentsExtension"/>
 
-	<bean id="alvex.aicom.share.resources"
-		  class="org.springframework.extensions.surf.util.ResourceBundleBootstrapComponent">
-		<property name="resourceBundles">
-			<list>
-				<value>alfresco.web-extension.messages.alvex-aikau-components</value>
-			</list>
-		</property>
-	</bean>
 </beans>
