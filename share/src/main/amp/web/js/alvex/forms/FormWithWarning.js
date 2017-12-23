@@ -1,3 +1,7 @@
+/*
+  Generic form inherited from alfresco/forms/Form with warning in the bottom of the form that notifies user that not all mandatory fields are filled and form cannot be saved.
+*/
+
 define(["dojo/_base/declare",
         "alfresco/forms/Form",
         "alfresco/core/Core",
