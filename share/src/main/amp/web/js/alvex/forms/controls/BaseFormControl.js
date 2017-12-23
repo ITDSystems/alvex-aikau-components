@@ -1,5 +1,30 @@
 /*
   Parent for all custom form constrols. Does not validate fields that are hidden if validateWhenHidden is false.
+  Sample (using TextBox and CheckBox widgets):
+  {
+    name: "alvex/forms/controls/CheckBox",
+    config: {
+      fieldId: "TEST",
+      name: "test1",
+      label: "1"
+    }
+  },{
+    name: "alvex/forms/controls/TextBox",
+    config: {
+      name: "test2",
+      label: "2",
+      requirementConfig: {
+        initialValue: true
+      },
+      visibilityConfig: {
+        initialValue: false,
+        rules: [{
+            targetId: "TEST",
+            is: [true]
+        }]
+      }
+    }
+  }
 */
 
 define(["dojo/_base/declare",

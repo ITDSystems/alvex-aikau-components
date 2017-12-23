@@ -1,12 +1,11 @@
 define(["alfresco/forms/controls/TextBox",
         "alvex/forms/controls/BaseFormControl",
-        "alfresco/core/Core",
         "alfresco/core/topics",
         "dojo/_base/declare",
         "alfresco/core/ObjectTypeUtils"
     ],
-    function(TextBox, BaseFormControl, AlfCore, topics, declare, ObjectTypeUtils) {
-        return declare([TextBox, BaseFormControl, AlfCore], {
+    function(TextBox, BaseFormControl, topics, declare, ObjectTypeUtils) {
+        return declare([TextBox, BaseFormControl], {
 
           i18nRequirements: [{i18nFile: "./i18n/ValidationMixin.properties"}],
 
