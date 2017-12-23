@@ -50,8 +50,6 @@
       <groupId>org.alfresco</groupId>
       <artifactId>aikau</artifactId>
       <version>1.0.103</version>
-      <scope>provided</scope>
-
       <!-- Exclude Aikau's dependency from the AMP -->
       <exclusions>
         <exclusion>
@@ -60,13 +58,10 @@
         </exclusion>
       </exclusions>
     </dependency>
-
     <dependency>
       <groupId>org.alfresco</groupId>
       <artifactId>aikau-forms-runtime-support</artifactId>
       <version>1.0.103</version>
-      <scope>provided</scope>
-
       <!-- Exclude Aikau's dependency from the AMP -->
       <exclusions>
         <exclusion>
@@ -75,6 +70,5 @@
         </exclusion>
       </exclusions>
     </dependency>
-
   </dependencies>
 </project>
