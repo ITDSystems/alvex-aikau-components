@@ -9,6 +9,8 @@ define(["alfresco/forms/controls/FilteringSelect",
         i18nFile: "./i18n/ValidationMixin.properties"
       }],
 
+      showAllOptionsOnOpen: true,
+
       getWidgetConfig: function alvex_forms_controls_FilteringSelect__getWidgetConfig() {
         // Return the configuration for the widget
         this.configureValidation();

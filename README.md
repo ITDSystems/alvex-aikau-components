@@ -18,34 +18,45 @@ Disables validation of the field, if field is hidden (also if section with a fie
 #### alvex/forms/controls/CheckBox
 
 Extends [alfresco/forms/controls/CheckBox](http://dev.alfresco.com/resource/docs/aikau-jsdoc/CheckBox.html).
-Inherited from alvex/forms/BaseFormControl. Disables validation of the field, if field is hidden (also if section with a field is hidden).
+Mixes in alvex/forms/BaseFormControl. Disables validation of the field, if field is hidden (also if section with a field is hidden).
 
 #### alvex/forms/controls/DateTextBox
 
 Extends [alfresco/forms/controls/DateTextBox](http://dev.alfresco.com/resource/docs/aikau-jsdoc/DateTextBox.html).
-Inherited from alvex/forms/BaseFormControl. Disables validation of the field, if field is hidden (also if section with a field is hidden).
+Mixes in alvex/forms/BaseFormControl. Disables validation of the field, if field is hidden (also if section with a field is hidden).
 
 Date format: dd.MM.yyyy
 
-If empty, use empty string as a value (""), not null.
+If empty, uses empty string as a value (""), not null.
 
 #### alvex/forms/controls/FilteringSelect
 
 Extends [alfresco/forms/controls/FilteringSelect](http://dev.alfresco.com/resource/docs/aikau-jsdoc/FilteringSelect.html).
-Inherited from alvex/forms/BaseFormControl. Disables validation of the field, if field is hidden (also if section with a field is hidden).
+Mixes in alvex/forms/BaseFormControl. Disables validation of the field, if field is hidden (also if section with a field is hidden).
 
 #### alvex/forms/controls/Select
 
 Extends [alfresco/forms/controls/Select](http://dev.alfresco.com/resource/docs/aikau-jsdoc/Select.html).
-Inherited from alvex/forms/BaseFormControl. Disables validation of the field, if field is hidden (also if section with a field is hidden).
+Mixes in alvex/forms/BaseFormControl. Disables validation of the field, if field is hidden (also if section with a field is hidden).
 
 #### alvex/forms/controls/TextArea
 
 Extends [alfresco/forms/controls/TextArea](http://dev.alfresco.com/resource/docs/aikau-jsdoc/TextArea.html).
-Inherited from alvex/forms/BaseFormControl. Disables validation of the field, if field is hidden (also if section with a field is hidden).
+Mixes in alvex/forms/BaseFormControl. Disables validation of the field, if field is hidden (also if section with a field is hidden).
 
 #### alvex/forms/controls/TextBox
 
 Extends [alfresco/forms/controls/TextBox](http://dev.alfresco.com/resource/docs/aikau-jsdoc/TextBox.html).
-Inherited from alvex/forms/BaseFormControl. Disables validation of the field, if field is hidden (also if section with a field is hidden).
+Mixes in alvex/forms/BaseFormControl. Disables validation of the field, if field is hidden (also if section with a field is hidden).
 
+## Inline edit property renderers
+
+#### alvex/renderers/InlineEditDateTextBox
+
+Extends [alfresco/renderers/InlineEditProperty](http://dev.alfresco.com/resource/docs/aikau-jsdoc/InlineEditProperty.html).
+Mixes in alvex/forms/controls/DateTextBox.
+
+#### alvex/renderers/InlineEditFilteringSelect
+
+Extends [alfresco/renderers/InlineEditProperty](http://dev.alfresco.com/resource/docs/aikau-jsdoc/InlineEditProperty.html).
+Mixes in alvex/forms/controls/FilteringSelect.
