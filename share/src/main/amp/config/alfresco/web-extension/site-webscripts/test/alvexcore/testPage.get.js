@@ -5,6 +5,8 @@ var headerServices = getHeaderServices();
 var headerWidgets = getHeaderModel("test");
 headerServices.push("alfresco/services/OptionsService");
 headerServices.push("alfresco/services/UserService");
+headerServices.push("alfresco/services/DocumentService");
+headerServices.push("alfresco/services/NodePreviewService");
 
 
 headerWidgets.push({
@@ -125,8 +127,17 @@ headerWidgets.push({
 }, {
   name: "alfresco/layout/TitleDescriptionAndContent",
   config: {
-    title: "Inline-edit properties sample",
+    title: "Renderers samples",
     widgets: [{
+      name: "alvex/renderers/Document",
+      config: {
+        propertyToRender: "nodeRef",
+        currentItem: {
+          nodeRef: "workspace://SpacesStore/1a0b110f-1e09-4ca2-b367-fe25e4964a4e"
+        }
+        /* label: "Document" -- does not support label */
+      }
+    }, {
       name: "alvex/renderers/InlineEditFilteringSelect",
       config: {
         propertyToRender: "test",

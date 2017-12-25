@@ -49,7 +49,12 @@ Mixes in alvex/forms/BaseFormControl. Disables validation of the field, if field
 Extends [alfresco/forms/controls/TextBox](http://dev.alfresco.com/resource/docs/aikau-jsdoc/TextBox.html).
 Mixes in alvex/forms/BaseFormControl. Disables validation of the field, if field is hidden (also if section with a field is hidden).
 
-## Inline edit property renderers
+## Renderers
+
+#### alvex/renderers/Document
+
+Renders file thumbnail and title from nodeRef. Shows preview on click. Supports multiple nodeRefs separated by a comma.
+Requires DocumentService and NodePreviewService on the page to show preview.
 
 #### alvex/renderers/InlineEditDateTextBox
 
