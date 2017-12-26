@@ -6,6 +6,7 @@ define(["dojo/_base/declare",
     "alfresco/core/CoreXhr",
     "alfresco/core/NodeUtils",
     "alfresco/core/topics",
+    "alfresco/core/Core",
     "service/constants/Default",
     "webscripts/defaults",
     "dojo/_base/array",
@@ -31,9 +32,9 @@ define(["dojo/_base/declare",
     "alfresco/renderers/Property",
     "alfresco/renderers/Size"
   ],
-  function(declare, BaseService, CoreXhr, NodeUtils, topics, AlfConstants, webScriptDefaults, array, lang, $) {
+  function(declare, BaseService, CoreXhr, NodeUtils, topics, AlfCore, AlfConstants, webScriptDefaults, array, lang, $) {
 
-    return declare([BaseService, CoreXhr], {
+    return declare([BaseService, CoreXhr, AlfCore], {
 
       /**
        * An array of the i18n files to use with this widget.
@@ -139,7 +140,7 @@ define(["dojo/_base/declare",
               validationConfig: [{
                 validation: "regex",
                 regex: "^[0-9]+$",
-                errorMessage: this.message("validation.numbers")
+                errorMessage: "" /* FIXME: this.message("validation.numbers") -- we cannot use function this.message here */
               }]
             }
           },
