@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/ITDSystems/alvex-aikau-components.svg?branch=master)](https://travis-ci.org/ITDSystems/alvex-aikau-components)
+
 # alvex-aikau-components
 Generic components for use in other extensions
 
