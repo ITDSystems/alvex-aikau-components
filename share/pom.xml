@@ -62,6 +62,16 @@
         </exclusion>
       </exclusions>
     </dependency>
-    <!--dependency> <groupId>org.alfresco</groupId> <artifactId>aikau-forms-runtime-support</artifactId> <version>1.0.103</version> <exclusions> <exclusion> <groupId>*</groupId> <artifactId>*</artifactId> </exclusion> </exclusions> </dependency-->
+    <dependency>
+      <groupId>org.alfresco</groupId>
+      <artifactId>aikau-forms-runtime-support</artifactId>
+      <version>1.0.101.3</version>
+      <exclusions>
+        <exclusion> 
+          <groupId>*</groupId> 
+	  <artifactId>*</artifactId> 
+        </exclusion>
+      </exclusions> 
+    </dependency>
   </dependencies>
 </project>
