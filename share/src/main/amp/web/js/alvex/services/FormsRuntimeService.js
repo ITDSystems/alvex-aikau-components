@@ -105,7 +105,7 @@ define(["dojo/_base/declare",
             name: "alfresco/forms/controls/CheckBox"
           },
           "/org/alfresco/components/form/controls/date.ftl": {
-            name: "alfresco/forms/controls/DateTextBox",
+            name: "alvex/forms/controls/DateTextBox",
             config: {
               unsetReturnValue: ""
             }
@@ -221,7 +221,8 @@ define(["dojo/_base/declare",
             "/org/alfresco/components/form/controls/date.ftl": {
               name: "alfresco/renderers/Date",
               config: {
-                simple: true
+                simple: true,
+                format: "dd.mm.yyyy"
                 // modifiedDateProperty: "prop_cm_modified",
                 // modifiedByProperty: "prop_cm_modifier"
               }
@@ -254,6 +255,11 @@ define(["dojo/_base/declare",
               name: "alvex/renderers/Document",
               config: {
                 subscribeGlobal: false
+              }
+            },
+            "/org/alfresco/components/form/controls/authority.ftl": {
+              name: "alfresco/renderers/User",
+              config: {
               }
             }
           }

@@ -44,7 +44,7 @@ define(["dojo/_base/declare",
                     widgets: [{
                         name: "alfresco/renderers/Property",
                         config: {
-                            renderedValue: this.message("no.nodes")
+                            renderedValue: " "
                         }
                     }]
                 }, this.subscribeGlobal);
