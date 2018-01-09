@@ -777,7 +777,8 @@ define(["dojo/_base/declare",
                 // form renderings...
                 widget = this.getViewProperty(targetField, controlTemplate, formConfig);
                 if (widget) {
-                  if (widget.config.shareControl.template === "/org/alfresco/components/form/controls/selectone.ftl") {
+                  var templ = lang.getObject("config.shareControl.template", false, widget);
+                  if (templ === "/org/alfresco/components/form/controls/selectone.ftl") {
                     var possibleOptions = widget.config.shareControl.params.options.split("#alf#");
                     var fieldOptions = [];
                     for (var i = 0, ii = possibleOptions.length; i < ii; i++) {
