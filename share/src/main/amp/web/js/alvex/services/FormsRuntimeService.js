@@ -325,15 +325,6 @@ define(["dojo/_base/declare",
           "/alvex/controls/ReadOnlySelect.ftl": {
             name: "alfresco/renderers/Property"
           },
-          "/alvex/renderers/gostReadonlyDoc.ftl": {
-            name: "gost/renderers/SelectedDoc",
-            config: {
-              subscribeGlobal: false
-            }
-          },
-          "/gost/renderers/commentTextarea.ftl": {
-            name: "gost/renderers/Property"
-          },
           "/alvex/renderers/ReadOnlyDoc.ftl": {
             name: "alvex/renderers/Document",
             config: {
@@ -613,7 +604,7 @@ define(["dojo/_base/declare",
           var widgets = [];
           if (response["arguments"].itemKind === "node" && response.mode === "view") {
             var metadataGroup = {
-              name: "gost/renderers/MetadataGroups",
+              name: "alfresco/node/MetadataGroups",
               config: {
                 currentItem: response.data,
                 groups: []
