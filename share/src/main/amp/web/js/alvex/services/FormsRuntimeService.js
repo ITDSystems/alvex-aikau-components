@@ -209,7 +209,24 @@ define(["dojo/_base/declare",
         // "kind" are view mode specific mappings...
         node: {
           edit: {
-
+            // This will work only if alvex-registers installed
+            "/com/alvexcore/components/form/controls/authority.ftl": {
+              name: "alfresco/forms/controls/MultiSelectInput",
+              config: {
+                width: "400px",
+                valueDelimiter: ",",
+                addedAndRemovedValues: true,
+                optionsConfig: {
+                  labelAttribute: "name",
+                  queryAttribute: "name",
+                  valueAttribute: "nodeRef",
+                  publishTopic: topics.GET_AUTHORITIES,
+                  publishPayload: {
+                    resultsProperty: "response.data.items"
+                  }
+                }
+              }
+            }
           },
 
           // The "view" mode of the "node" kind is different in that it displays the
