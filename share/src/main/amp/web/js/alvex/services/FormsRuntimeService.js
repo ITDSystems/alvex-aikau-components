@@ -30,7 +30,8 @@ define(["dojo/_base/declare",
     "alfresco/node/MetadataGroups",
     "alfresco/renderers/Date",
     "alfresco/renderers/Property",
-    "alfresco/renderers/Size"
+    "alfresco/renderers/Size",
+    "alvex/renderers/RegisterItemLink"
   ],
   function(declare, BaseService, CoreXhr, NodeUtils, topics, AlfCore, AlfConstants, webScriptDefaults, array, lang, $) {
 
