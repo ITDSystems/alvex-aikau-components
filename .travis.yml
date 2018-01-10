@@ -22,11 +22,15 @@ before_script:
 
 script:
     - rm -rf $HOME/.m2/repository/com/alvexcore
+    - ./mvnw -f repo/pom.xml clean package
+    - ./mvnw -f repo/pom.xml clean package -P make-jar
     - ./mvnw -f share/pom.xml clean package
     - ./mvnw -f share/pom.xml clean package -P make-jar
+    - ./run_integration_tests.sh repo
     - ./run_integration_tests.sh share
 
 after_success:
+    - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then ./mvnw -f repo/pom.xml deploy -P make-jar; fi'
     - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then ./mvnw -f share/pom.xml deploy -P make-jar; fi'
 
 
