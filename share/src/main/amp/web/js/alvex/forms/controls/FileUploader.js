@@ -9,13 +9,13 @@ define(["alfresco/forms/controls/BaseFormControl",
     ],
     function(BaseFormControl, declare, CoreWidgetProcessing, ObjectProcessingMixin, lang, array, ObjectTypeUtils, topics) {
         return declare([BaseFormControl, CoreWidgetProcessing, ObjectProcessingMixin], {
-            i18nRequirements: [{i18nFile: "./i18n/FileFormUploader.properties"}],
+            i18nRequirements: [{i18nFile: "./i18n/FileUploader.properties"}],
             itemKeyProperty: "nodeRef",
             multipleItemMode: false,
             itemsToShow: null,
             filterMimeType: "",
             valueDelimiter: ",",
-            configureValidation: function alvex_forms_controls_FileFormUploader__configureValidation() {
+            configureValidation: function alvex_forms_controls_FileUploader__configureValidation() {
                 if (this.requirementConfig && this.requirementConfig.initialValue === true) {
                     if (!this.validationConfig || !ObjectTypeUtils.isArray(this.validationConfig)) {
                         this.validationConfig = [];
@@ -23,11 +23,11 @@ define(["alfresco/forms/controls/BaseFormControl",
                     this.validationConfig.push({
                         validation: "minLength",
                         length: 1,
-                        errorMessage: "Обязательное поле"
+                        errorMessage: "uploader.error.mandatory"
                     });
                 }
             },
-            setupSubTopics: function alvex_forms_controls__FileFormUploader_setupSubTopics () {
+            setupSubTopics: function alvex_forms_controls__FileUploader_setupSubTopics () {
                 this.updateSelectedItemsTopic = this.generateUuid() + "_updateSelectedItemsTopic";
                 this.removeItemTopic = this.generateUuid() + "_removeItemTopic";
                 this.alfSubscribe(this.removeItemTopic, lang.hitch(this, this.onItemRemoved), true);
@@ -35,7 +35,7 @@ define(["alfresco/forms/controls/BaseFormControl",
                 this.alfSubscribe(this.alvexUploadResponseTopic, lang.hitch(this, this.onFileUploadResult), true);
             },
 
-            onFileUploadResult: function alvex_forms_controls__FileFormUploader_onFileUploadResult(payload) {
+            onFileUploadResult: function alvex_forms_controls__FileUploader_onFileUploadResult(payload) {
                 if ((payload.isUploaded) &&(payload.response.nodeRef != null)) {
                     var responseTopic = this.generateUuid()+"_FileUpl_";
                     var handle = this.alfSubscribe(responseTopic + "_SUCCESS", lang.hitch(this, function(payload) {
@@ -72,7 +72,7 @@ define(["alfresco/forms/controls/BaseFormControl",
                     // handling manual cancellation.
                 }
             },
-           /* onFileUploadResult: function alvex_forms_controls__FileFormUploader_onFileUploadResult(payload) {
+           /* onFileUploadResult: function alvex_forms_controls__FileUploader_onFileUploadResult(payload) {
                 if ((payload.isUploaded) &&(payload.response.nodeRef != null)) {
 
 
@@ -117,7 +117,7 @@ define(["alfresco/forms/controls/BaseFormControl",
                     // handling manual cancellation.
                 }
             },*/
-            onItemRemoved: function alvex_forms_controls__FileFormUploader_onItemRemoved (payload) {
+            onItemRemoved: function alvex_forms_controls__FileUploader_onItemRemoved (payload) {
                 var keyToRemove = lang.getObject("nodeRef", false, payload);
                 this.itemsToShow = array.filter(this.itemsToShow, function(file) {
                     var existingKey = lang.getObject("nodeRef", false, file);
@@ -134,7 +134,7 @@ define(["alfresco/forms/controls/BaseFormControl",
                 this.onValueChangeEvent(this.name, oldValue, updatedValue);
                 this.updateSelectedItems(this.updateSelectedItemsTopic);
             },
-            createFormControl: function alvex_forms_controls__FileFormUploader_createFormControl (config, domNode) {
+            createFormControl: function alvex_forms_controls__FileUploader_createFormControl (config, domNode) {
                 this.setupSubTopics();
                 this._dialogId = this.id + "_FILE_PICKER_DIALOG";
                 var widgetsForControl = [
@@ -150,11 +150,11 @@ define(["alfresco/forms/controls/BaseFormControl",
                         id: this.id + "_UPLOAD_BUTTON",
                         name: "alfresco/buttons/AlfButton",
                         config: {
-                            label: "Загрузить",
+                            label: "uploader.button.upload",
                             publishTopic: "ALF_CREATE_FORM_DIALOG_REQUEST",
                             publishPayload: {
                                 dialogId: this._dialogId,
-                                dialogTitle: "Загрузка файлов",
+                                dialogTitle: "uploader.dialog.upload.title",
                                 formSubmissionTopic: "ALF_UPLOAD_REQUEST",
                                 formSubmissionPayloadMixin: {
                                     targetData: {
@@ -177,7 +177,7 @@ define(["alfresco/forms/controls/BaseFormControl",
                                         config: {
                                             filterMimeType: this.filterMimeType,
                                             name: "files",
-                                            label: "Выберите файл для загрузки",
+                                            label: "uploader.dialog.select",
                                             multiple: this.multipleItemMode
                                         }
                                     }
@@ -189,7 +189,7 @@ define(["alfresco/forms/controls/BaseFormControl",
                 ];
                 return this.processWidgets(widgetsForControl, this._controlNode);
             },
-            getValue: function alvex_forms_controls__FileFormUploader_getValue() {
+            getValue: function alvex_forms_controls__FileUploader_getValue() {
                 var value = this.value;
                 if (value && ObjectTypeUtils.isArray(value)) {
                     value = value.join(this.valueDelimiter);
@@ -199,7 +199,7 @@ define(["alfresco/forms/controls/BaseFormControl",
                 }
                 return value;
             },
-            setValue: function alvex_forms_controls__FileFormUploader_setValue(value) {
+            setValue: function alvex_forms_controls__FileUploader_setValue(value) {
                 if ((ObjectTypeUtils.isString(value))&&(value !== "")) {
                     value = value.split(this.valueDelimiter);
                 }
@@ -246,7 +246,7 @@ define(["alfresco/forms/controls/BaseFormControl",
                 this.value = value;
             },
 
-            updateSelectedItems: function alvex_forms_controls__FileFormUploader__updateSelectedItems(topic) {
+            updateSelectedItems: function alvex_forms_controls__FileUploader__updateSelectedItems(topic) {
                 var widgetsForSelectedItems = lang.clone(this.widgetsForSelectedItems);
                 this.processObject(["processInstanceTokens"], widgetsForSelectedItems);
                 this.alfPublish(topic, {
@@ -274,7 +274,7 @@ define(["alfresco/forms/controls/BaseFormControl",
                     this.validationConfig.push({
                         validation: "minLength",
                         length: 1,
-                        errorMessage: "Обязательное поле"
+                        errorMessage: "uploader.error.mandatory"
                     });
                 }
                 return {};
@@ -285,7 +285,7 @@ define(["alfresco/forms/controls/BaseFormControl",
                     id: "{id}_ITEMS_VIEW",
                     name: "alfresco/lists/views/AlfListView",
                     config: {
-                        noItemsMessage: "registerSelect.noitems.message",
+                        noItemsMessage: " ",
                         currentData: {
                             items: "{itemsToShow}"
                         },

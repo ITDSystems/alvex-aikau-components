@@ -31,7 +31,8 @@ define(["dojo/_base/declare",
     "alfresco/renderers/Date",
     "alfresco/renderers/Property",
     "alfresco/renderers/Size",
-    "alvex/renderers/RegisterItemLink"
+    "alvex/renderers/RegisterItemLink",
+    "alvex/forms/controls/FileUploader"
   ],
   function(declare, BaseService, CoreXhr, NodeUtils, topics, AlfCore, AlfConstants, webScriptDefaults, array, lang, $) {
 
@@ -59,11 +60,11 @@ define(["dojo/_base/declare",
         // control mappings, this allows there to be flexibility in configuration and mapping
         // on "kind" (type) specific mapping...
         "default": {
+          // TODO: check if the field requires multiple mode or not
           "/org/alfresco/components/form/controls/association.ftl": {
-            name: "alfresco/forms/controls/FilePicker",
+            name: "alvex/forms/controls/FileUploader",
             config: {
-              valueDelimiter: ",",
-              addedAndRemovedValues: true
+              multipleItemMode: true
             }
           },
 
@@ -154,7 +155,7 @@ define(["dojo/_base/declare",
           },
 
           "/org/alfresco/components/form/controls/workflow/packageitems.ftl": {
-            name: "alfresco/forms/controls/FilePicker",
+            name: "alvex/forms/controls/FileUploader",
             config: {
               valueDelimiter: ",",
               addedAndRemovedValues: true

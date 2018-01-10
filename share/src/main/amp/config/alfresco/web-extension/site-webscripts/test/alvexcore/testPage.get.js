@@ -7,6 +7,12 @@ headerServices.push("alfresco/services/OptionsService");
 headerServices.push("alfresco/services/UserService");
 headerServices.push("alfresco/services/DocumentService");
 headerServices.push("alfresco/services/NodePreviewService");
+headerServices.push("alvex/services/FileUploadService");
+headerServices.push("alfresco/services/ContentService");
+headerServices.push("alfresco/services/SiteService");
+headerServices.push("alfresco/services/NotificationService");
+headerServices.push("alfresco/services/LightboxService");
+headerServices.push("alfresco/services/DialogService");
 
 
 headerWidgets.push({
@@ -73,6 +79,12 @@ headerWidgets.push({
               }]
             }
           }
+        }, {
+           name: "alvex/forms/controls/FileUploader",
+           config: {
+              label: "Uploader",
+              name: "testUploader"
+           }
         }, {
           name: "alfresco/forms/CollapsibleSection",
           config: {

@@ -2,7 +2,8 @@ define(["alfresco/core/topics",
         "alvex/services/BaseUploadService",
         "dojo/_base/declare",
         "dojo/_base/lang",
-        "dojo/Deferred"],
+        "dojo/Deferred",
+        "alvex/upload/UploadMonitor"],
     function(topics, BaseUploadService, declare, lang, Deferred) {
 
         // Declare and return the class
@@ -15,15 +16,15 @@ define(["alfresco/core/topics",
             widgetsForUploadDisplay: [{
                 name: "alvex/upload/UploadMonitor"
             }],
-            resetTotalUploads: function alfresco_services_FileUploadService__resetTotalUploads() {
+            resetTotalUploads: function alvex_services_FileUploadService__resetTotalUploads() {
                 this.inherited(arguments);
                 this.alfServicePublish(topics.STICKY_PANEL_ENABLE_CLOSE);
             },
-            registerSubscriptions: function alfresco_services_FileUploadService__registerSubscriptions() {
+            registerSubscriptions: function alvex_services_FileUploadService__registerSubscriptions() {
                 this.inherited(arguments);
                 this.alfSubscribe(topics.STICKY_PANEL_CLOSED, lang.hitch(this, this.onUploadsContainerClosed), true);
             },
-            showUploadsWidget: function alfresco_services_FileUploadService__showUploadsWidget() {
+            showUploadsWidget: function alvex_services_FileUploadService__showUploadsWidget() {
                 var dfd = new Deferred();
                 var widgetsForUploadDisplay = this.processWidgetsForUploadDisplay();
                 this.alfServicePublish(topics.DISPLAY_STICKY_PANEL, {

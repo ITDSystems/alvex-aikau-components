@@ -8,7 +8,7 @@ define(["alfresco/upload/UploadMonitor",
     function(UploadMonitor, declare, lang, domClass, domConstruct, dojo, array) {
         return declare([UploadMonitor], {
 
-            addInProgressFile: function alfesco_upload_UploadMonitor__addInProgressFile(fileId, file) {
+            addInProgressFile: function alvex_upload_UploadMonitor__addInProgressFile(fileId, file) {
                 dojo.query(".alfresco-layout-StickyPanel").style("visibility", "visible");
                 // Add new row
                 var itemRow = domConstruct.create("tr", {
