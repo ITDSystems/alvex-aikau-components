@@ -257,8 +257,9 @@ define(["dojo/_base/declare",
                 subscribeGlobal: false
               }
             },
-            "/org/alfresco/components/form/controls/authority.ftl": {
-              name: "alfresco/renderers/User",
+            // This will work only if alvex-registers installed
+            "/com/alvexcore/components/form/controls/authority.ftl": {
+              name: "alvex/renderers/RegisterItemLink",
               config: {
               }
             }
