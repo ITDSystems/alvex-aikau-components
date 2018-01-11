@@ -83,7 +83,8 @@ headerWidgets.push({
            name: "alvex/forms/controls/FileUploader",
            config: {
               label: "Uploader",
-              name: "testUploader"
+              name: "testUploader",
+              addedAndRemovedValues: true
            }
         }, {
           name: "alfresco/forms/CollapsibleSection",

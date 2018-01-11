@@ -55,8 +55,6 @@ define(["alfresco/forms/controls/BaseFormControl",
                             updatedValue = [nodeRef];
                             this.itemsToShow = [updatedFile];
                         }
-                        oldValue = this.value;
-                        updatedValue = [payload.response.nodeRef];
                         this.value = updatedValue;
                         this.onValueChangeEvent(this.name, oldValue, updatedValue);
                         this.updateSelectedItems(this.updateSelectedItemsTopic);
