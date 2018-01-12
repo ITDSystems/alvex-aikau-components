@@ -64,7 +64,8 @@ define(["dojo/_base/declare",
           "/org/alfresco/components/form/controls/association.ftl": {
             name: "alvex/forms/controls/FileUploader",
             config: {
-              multipleItemMode: true
+              multipleItemMode: true,
+              addedAndRemovedValues: true
             }
           },
 
