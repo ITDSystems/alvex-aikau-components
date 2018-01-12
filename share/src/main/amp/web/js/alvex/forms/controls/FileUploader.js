@@ -39,10 +39,10 @@ define(["alfresco/forms/controls/BaseFormControl",
                 if ((payload.isUploaded) &&(payload.response.nodeRef != null)) {
                     var responseTopic = this.generateUuid()+"_FileUpl_";
                     var handle = this.alfSubscribe(responseTopic + "_SUCCESS", lang.hitch(this, function(payload) {
-                        var oldValue = this.value;
-                        var updatedValue = this.value;
                         !!!this.value && (this.value = []);
                         !!!this.itemsToShow && (this.itemsToShow = []);
+                        var oldValue = this.value;
+                        var updatedValue = this.value;
                         this.alfUnsubscribe(handle);
                         var updatedFile = payload.response.item;
                         this.normaliseFile(updatedFile);
@@ -55,8 +55,6 @@ define(["alfresco/forms/controls/BaseFormControl",
                             updatedValue = [nodeRef];
                             this.itemsToShow = [updatedFile];
                         }
-                        oldValue = this.value;
-                        updatedValue = [payload.response.nodeRef];
                         this.value = updatedValue;
                         this.onValueChangeEvent(this.name, oldValue, updatedValue);
                         this.updateSelectedItems(this.updateSelectedItemsTopic);
