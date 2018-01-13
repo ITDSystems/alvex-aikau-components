@@ -2,12 +2,14 @@ define(["alfresco/forms/controls/BaseFormControl",
         "dojo/_base/declare",
         "alfresco/core/CoreWidgetProcessing",
         "alfresco/core/ObjectProcessingMixin",
+        "service/constants/Default",
         "dojo/_base/lang",
         "dojo/_base/array",
+        "jquery",
         "alfresco/core/ObjectTypeUtils",
         "alfresco/core/topics"
     ],
-    function(BaseFormControl, declare, CoreWidgetProcessing, ObjectProcessingMixin, lang, array, ObjectTypeUtils, topics) {
+    function(BaseFormControl, declare, CoreWidgetProcessing, ObjectProcessingMixin, AlfConstants, lang, array, $, ObjectTypeUtils, topics) {
         return declare([BaseFormControl, CoreWidgetProcessing, ObjectProcessingMixin], {
             i18nRequirements: [{i18nFile: "./i18n/FileUploader.properties"}],
             itemKeyProperty: "nodeRef",
@@ -30,11 +32,20 @@ define(["alfresco/forms/controls/BaseFormControl",
             setupSubTopics: function alvex_forms_controls__FileUploader_setupSubTopics () {
                 this.updateSelectedItemsTopic = this.generateUuid() + "_updateSelectedItemsTopic";
                 this.removeItemTopic = this.generateUuid() + "_removeItemTopic";
+                this.detailsItemTopic = this.generateUuid() + "_detailsItemTopic";
+                this.alfSubscribe(this.detailsItemTopic, lang.hitch(this, this.onItemDetails), true);
                 this.alfSubscribe(this.removeItemTopic, lang.hitch(this, this.onItemRemoved), true);
                 this.alvexUploadResponseTopic = this.generateUuid();
                 this.alfSubscribe(this.alvexUploadResponseTopic, lang.hitch(this, this.onFileUploadResult), true);
             },
-
+            onItemDetails: function alvex_forms_controls__FileUploader_onItemDetails(payload) {
+                var nodeRef = encodeURIComponent(payload.nodeRef);
+                this.alfPublish("ALF_NAVIGATE_TO_PAGE", {
+                    url: "/document-details?nodeRef=" + nodeRef,
+                    type: "SHARE_PAGE_RELATIVE",
+                    target: "NEW"
+                    },true);
+            },
             onFileUploadResult: function alvex_forms_controls__FileUploader_onFileUploadResult(payload) {
                 if ((payload.isUploaded) &&(payload.response.nodeRef != null)) {
                     var responseTopic = this.generateUuid()+"_FileUpl_";
@@ -70,51 +81,6 @@ define(["alfresco/forms/controls/BaseFormControl",
                     // handling manual cancellation.
                 }
             },
-           /* onFileUploadResult: function alvex_forms_controls__FileUploader_onFileUploadResult(payload) {
-                if ((payload.isUploaded) &&(payload.response.nodeRef != null)) {
-
-
-                    var oldValue;
-                    var updatedValue;
-                    if (this.multipleItemMode) {
-                        !!!this.itemsToShow && (this.itemsToShow = []);
-                        this.itemsToShow.push({
-                            type: payload.file.type,
-                            nodeRef: payload.response.nodeRef,
-                            name: payload.file.name
-                        });
-                        // Syncing value with displayed
-                        !!!this.value && (this.value = []);
-                        oldValue = this.value;
-                        updatedValue = [];
-                        array.forEach(this.itemsToShow, function (file) {
-                            updatedValue.push(file.nodeRef);
-                        }, this);
-                        this.value = updatedValue;
-                        this.onValueChangeEvent(this.name, oldValue, updatedValue);
-
-                        this.updateSelectedItems(this.updateSelectedItemsTopic);
-                    } else {
-                        this.itemsToShow = [{
-                            type: payload.file.type,
-                            nodeRef: payload.response.nodeRef,
-                            name: payload.file.name
-                        }];
-
-                        !!!this.value && (this.value = []);
-                        oldValue = this.value;
-                        updatedValue = [payload.response.nodeRef];
-                        this.value = updatedValue;
-                    }
-                    this.onValueChangeEvent(this.name, oldValue, updatedValue);
-                    this.updateSelectedItems(this.updateSelectedItemsTopic);
-                } else
-                {
-                    // Handle upload failure by removing the lock from the form.
-                    // It's possible that we need to throw one more GOST_UPLOAD_RESULT from UploadMonitor for
-                    // handling manual cancellation.
-                }
-            },*/
             onItemRemoved: function alvex_forms_controls__FileUploader_onItemRemoved (payload) {
                 var keyToRemove = lang.getObject("nodeRef", false, payload);
                 this.itemsToShow = array.filter(this.itemsToShow, function(file) {
@@ -411,14 +377,24 @@ define(["alfresco/forms/controls/BaseFormControl",
                                         {
                                             name: "alfresco/lists/views/layouts/Cell",
                                             config: {
-                                                width: "20px",
+                                                width: "40px",
                                                 widgets: [
+                                                    {
+                                                        id: "{id}_ITEM_DETAILS",
+                                                        name: "alfresco/renderers/PublishAction",
+                                                        config: {
+                                                            iconClass: "info-16",
+                                                            publishTopic: "{detailsItemTopic}",
+                                                            publishPayloadType: "CURRENT_ITEM",
+                                                            publishGlobal: true
+                                                        }
+                                                    },
                                                     {
                                                         id: "{id}_SELECTED_FILES_REMOVE",
                                                         name: "alfresco/renderers/PublishAction",
                                                         config: {
                                                             iconClass: "delete-16",
-                                                            publishTopic: "{removeFileTopic}",
+                                                            publishTopic: "{removeItemTopic}",
                                                             publishPayloadType: "CURRENT_ITEM",
                                                             publishGlobal: true
                                                         }
