@@ -142,7 +142,7 @@ define(["dojo/_base/declare",
             config: {
               validationConfig: [{
                 validation: "regex",
-                regex: "^[0-9]+$",
+                regex: "^[0-9]+\.?[0-9]+?$",
                 errorMessage: "" /* FIXME: this.message("validation.numbers") -- we cannot use function this.message here */
               }]
             }
