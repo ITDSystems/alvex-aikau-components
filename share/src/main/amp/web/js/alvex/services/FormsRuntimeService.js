@@ -1,5 +1,4 @@
 /* Fork of http://dev.alfresco.com/resource/docs/aikau-jsdoc/FormsRuntimeService.js.html to extend it with new widgets */
-/* Not tested, will be completed after Registers release */
 
 define(["dojo/_base/declare",
     "alfresco/services/BaseService",

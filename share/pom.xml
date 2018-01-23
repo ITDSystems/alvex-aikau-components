@@ -53,7 +53,7 @@
     <dependency>
       <groupId>org.alfresco</groupId>
       <artifactId>aikau</artifactId>
-      <version>1.0.101.3</version>
+      <version>1.0.101</version>
       <!-- Exclude Aikau's dependency from the AMP -->
       <exclusions>
         <exclusion>
@@ -65,7 +65,7 @@
     <dependency>
       <groupId>org.alfresco</groupId>
       <artifactId>aikau-forms-runtime-support</artifactId>
-      <version>1.0.101.3</version>
+      <version>1.0.101</version>
       <exclusions>
         <exclusion> 
           <groupId>*</groupId> 
