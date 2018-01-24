@@ -1,7 +1,14 @@
 [![Build Status](https://travis-ci.org/ITDSystems/alvex-aikau-components.svg?branch=master)](https://travis-ci.org/ITDSystems/alvex-aikau-components)
 
-# alvex-aikau-components
+# Alvex Aikau Components
 Generic components for use in other extensions. 
+
+Compatible with Alfresco 5.1 and 5.2.
+
+This component requires:
+* [Alvex Utils](https://github.com/ITDSystems/alvex-utils)
+* Aikau 1.0.101 or later
+* Aikau Forms Runtime Support
 
 ## Form
 
@@ -99,3 +106,11 @@ Mixes in alvex/forms/controls/FilteringSelect.
 
 Fork of http://dev.alfresco.com/resource/docs/aikau-jsdoc/FormsRuntimeService.js.html to extend it with new widgets.
 Extend this Service with your custom widgets like this: https://github.com/ITDSystems/alvex-registers/blob/master/share/src/main/amp/web/js/alvex/services/RegisterFormsRuntimeService.js
+
+# Using this project
+
+Recommended way to use Alvex components is to include them as dependencies to your Maven project. Follow [this guide](https://github.com/ITDSystems/alvex#recommended-way-include-alvex-to-your-project-via-maven-configuration) to include this component to your project.
+
+# Build from source
+
+To build Alvex follow [this guide](https://github.com/ITDSystems/alvex#build-component-from-source).
